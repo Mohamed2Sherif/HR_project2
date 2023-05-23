@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <!-- <link rel="stylesheet" href="forget.css"> -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!-- <link rel="stylesheet" href="Login_Create.css"> -->
+     <link rel="stylesheet" href="nav bar/navBarStyle.css">
+     <link rel="stylesheet" href="../side_nav_bar/sideNavBar.css">
+     <link rel="stylesheet" href="Form new design/login.css">   
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forget Password 2</title>
+</head>
+<body>
+
+    <input type="checkbox" name="" id="check">
+        <label for="check">
+            <i class="fa-solid fa-bars" id="button"></i>        
+            <i class="fas fa-xmark" id="cancel"></i>
+        </label>
+        <div class="side-bar">
+            <header>
+                HR_Link
+            </header>
+            <ul>
+                <li><a href="{% url 'about'%}l"><i class="fas fa-circle-question"></i>About</a></li>
+                <li><a href="{% url 'services'%}"><i class="fas fa-sliders-h"></i>Services</a></li>
+                <li><a href="{% url 'contact'%}"><i class="fas fa-envelope"></i>Contact</a></li>
+                <li><a id="logout-link" onclick="logoutUser()" href="{% url 'login'%}"><i class="fa-solid fa-right-from-bracket"></i>Login</a></li>
+
+            </ul>
+        </div>
+
+        <header class="header">
+			<img class="header-logo" src="/website Pages/Authentication pages/HR9.png" alt="logo">
+			<nav>
+				<ul class="nav-links">
+					<li class="header-lst-itm"><a class="header-link" href="{% url 'services'%}">Services</a></li>
+					<li class="header-lst-itm"><a class="header-link" href="{% url 'about'%}">About</a></li>
+					<li class="header-lst-itm"><a class="header-link" href="{% url 'contact'%}">Contact</a></li>
+				</ul>
+			</nav>
+			<a class="cta header-link" href="{% url 'login'%}"><button class="header-button1">Login</button></a>
+			<div class="toggle-button">
+				<!-- <i class="fa-solid fa-bars"></i>  -->
+			</div>
+			<!-- <div class="dropdown-menu">
+				<li class="header-lst-itm"> <a class="header-link" href="#">Services</a></li>
+				<li class="header-lst-itm"><a class="header-link" href="#">Projects</a></li>
+				<li class="header-lst-itm"><a class="header-link" href="#">About</a></li>
+				<li class="header-lst-itm"><a class="cta header-link" href="Authentication pages/login.html"><button class="header-button2">Log out</button></a></li>
+			</div> -->
+		</header>  
+
+
+<div class="wrapper">
+    <div class="form-box">
+        <h2>Check your email</h2>
+        
+        
+        <form class="forget-form"  method="post" action="forget.html">
+            <h3>We have sent a vertication code to your email</h2>
+            <div class="section input-box">
+                <input id = "VerCode" type = "text" name="VerCode" placeholder = ""/>
+                <label for="VerCode">Enter the Verification code</label>
+            </div>
+    
+            <input type="submit" class = "submit submit-button" value="submit">
+            <br><br>
+            <div class="forget_send-again">
+                <a class="forget-link remember-forget" href="url">send again</a>
+                
+                <!-- <button onclick="showSpinner()">Reset Password</button> -->
+                <a class="forget-link remember-forget" href="forget.html">Forget password</a>
+
+            </div>
+            </form>
+    </div>
+</div>
+
+<footer>
+    &copy; 2023 Human Resources Website all rights reserved
+  </footer>
+
+
+    <!--  for the header -->
+    <script src="nav bar/navBar.js"></script>
+</body>
+</html>

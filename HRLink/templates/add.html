@@ -1,0 +1,124 @@
+{%extends 'base.html'%}
+{%load static%}
+<html lang="en">
+	{%block content%}
+	<head>
+		<meta charset="UTF-8">
+		<title>Employee Management System</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- <link rel="stylesheet" href="add.css"> -->
+		<link rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<link rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+			integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+			crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="{%static 'css/navBarStyle.css'%}">
+		<link rel="stylesheet" href="{%static 'css/Login_Create.css'%}">
+		<link rel="stylesheet" href="{%static 'css/sideNavBar.css'%}">
+
+	</head>
+
+	<body>
+		<input type="checkbox" name id="check">
+		<label for="check">
+			<i class="fa-solid fa-bars" id="button"></i>
+			<i class="fas fa-xmark" id="cancel"></i>
+		</label>
+		<div class="side-bar">
+			<header>
+				HR_Link
+			</header>
+			<ul>
+				<li><a href="home_HR.html"><i class="fas fa-qrcode"></i>Manage Page</a></li>
+				<li><a href="EmpTable.html"><i class="fas fa-stream"></i>Table of Employees
+					</a></li>
+				<li><a href="about.html"><i class="fas fa-circle-question"></i>About</a></li>
+				<li><a href="services.html"><i class="fas fa-sliders-h"></i>Services</a></li>
+				<li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+				<li><a id="logout-link" onclick="logoutUser()"
+						href="Authentication pages/login.html"><i
+							class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
+				<script> 
+                    function logoutUser() {
+                        window.location.replace = "home_HR.html";
+                        history.pushState(null, null, location.href);
+                    }
+                </script>
+
+			</ul>
+		</div>
+
+		<form class="create-form" method="post">
+			{%csrf_token%}
+			<h1>Add new Employee</h1>
+
+			<div class="section">
+				<label for="txt"> Name: </label>
+				{{form.Name}}
+			</div>
+
+			<div class="section">
+				<label for="id"> ID: </label>
+				{{form.accId}}
+			</div>
+
+			<div class="section">
+				<label for="mail"> Email: </label>
+				{{form.email}}
+			</div>
+
+			<div class="section">
+				<label for="address"> Adress: </label>
+				{{form.address}}
+			</div>
+
+			<div class="section">
+				<label for="phone"> Phone Number: </label>
+				{{form.phone}}
+			</div>
+
+			<div class="section" id="radio">
+				{{form.gender}}
+			</div>
+
+			<div class="section">
+				<label for="vaca"> Number Of Available Vacation Days: </label>
+				{{form.availableVac}}
+			</div>
+
+			<div class="section">
+				<label for="sal"> Salary: </label>
+				{{form.salary}}
+			</div>
+
+			<div class="section">
+				<label for="birth"> Date of birth: </label>
+				{{form.Birth_date}}
+			</div>
+
+			<div class="section">
+				<input class="submit" type="submit" value="add">
+			</div>
+		</form>
+
+		<footer>
+			&copy; 2023 Human Resources Website all rights reserved
+		</footer>
+
+		<!-- <script>
+	function addEmp() {
+		location.replace("Add.html")
+	}
+
+	function closeForm() {
+		document.getElementById("Add").style.display = "none";
+	}
+</script> -->
+
+<!--		<script src="{%static 'js/add.js'%}"></script>-->
+
+	</body>
+	{%endblock content%}
+</html>

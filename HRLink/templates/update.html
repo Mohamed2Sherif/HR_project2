@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{%extends "base.html"%}
+{% load static %}
+<html lang="en">
+{% block content %}
+	<head>
+		<meta charset="UTF-8">
+		<title>Employee Management System</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- <link rel="stylesheet" href="add.css"> -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="{% static 'css/navBarStyle.css' %}">
+		<link rel="stylesheet" href="{% static 'css/Login_Create.css' %}">
+		<link rel="stylesheet" href="{% static 'css/sideNavBar.css' %}">
+
+	</head>
+
+	<body>
+		
+		<input type="checkbox" name="" id="check">
+        <label for="check">
+            <i class="fa-solid fa-bars" id="button"></i>        
+            <i class="fas fa-xmark" id="cancel"></i>
+        </label>
+        <div class="side-bar">
+            <header>
+                HR_Link
+            </header>
+            <ul>
+                <li><a href="{% url 'home'%}"><i class="fas fa-qrcode"></i>Manage Page</a></li>
+                <li><a href="{% url 'EmpTable'%}"><i class="fas fa-stream"></i>Table of Employees </a></li>
+                <li><a href="{% url 'about'%}"><i class="fas fa-circle-question"></i>About</a></li>
+                <li><a href="{% url 'services'%}"><i class="fas fa-sliders-h"></i>Services</a></li>
+                <li><a href="{% url 'contact'%}"><i class="fas fa-envelope"></i>Contact</a></li>
+				<li><a id="logout-link" onclick="logoutUser()" href="{% url 'login'%}"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
+                <script> 
+                    function logoutUser() {
+                        window.location.replace = "home_HR.html";
+                        history.pushState(null, null, location.href);
+                    }
+                </script>
+
+                <script type="text/javascript">
+                    function noBack() { window.history.forward() }
+                    noBack();
+                    window.onload = noBack;
+                    window.onpageshow = function (evt) { if (evt.persisted) noBack() }
+                    window.onunload = function () { void (0) }
+                </script>
+
+            </ul>
+        </div>
+
+		<form class="create-form" action="{% url 'updating' employee.pk %}" method = "post">
+			{% csrf_token %}
+			<h1>Update Employee Info</h1>
+		
+			<div class="section">
+				<label for="salary"> Salary: </label>
+				<input type="text" id="salary" name="salary" value="{{ employee.salary }}">
+			</div>
+			<div class="section">
+				<label for="phone"> Phone: </label>
+				<input type="text" id="phone" name="phone" value="{{ employee.phone }}">
+			</div>
+			<div class="section">
+				<label for="availableVac"> available vacations: </label>
+				<input type="text" id="availableVac" name="availableVac" value="{{ employee.availableVac }}">
+			</div>
+			<div class="section">
+				<label for="approvedVac"> approved vacations: </label>
+				<input type="text" id="approvedVac" name="approvedVac" value="{{ employee.approvedVac }}">
+			</div>
+
+
+			<div class="section">
+				<input class="submit" type="submit" value="update">
+			</div>
+		</form>
+
+
+		<footer>
+			&copy; 2023 Human Resources Website all rights reserved
+		</footer>
+		
+
+<!-- <script>
+	function addEmp() {
+		location.replace("Add.html")
+	}
+
+	function closeForm() {
+		document.getElementById("Add").style.display = "none";
+	}
+</script> -->
+
+<script src="{% static 'js/update.js' %}"></script>
+
+</body>
+{% endblock content %}
+</html>

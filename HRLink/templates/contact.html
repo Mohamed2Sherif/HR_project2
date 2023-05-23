@@ -1,0 +1,116 @@
+{%extends 'base.html'%}
+{%load static%}
+<html lang="en">
+    {%block content%}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact</title>
+    <link rel="stylesheet" href="{%static 'fonts/font/CarlGauss_PERSONAL_USE_ONLY.otf'%}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{%static 'css/footer.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{%static 'css/sideNavBar.css'%}">
+	<link rel="stylesheet" href="{%static 'css/navBarStyle.css'%}">
+    <link rel="stylesheet" href="{%static 'css/menu.css'%}">
+
+</head>
+<body>
+
+    <input type="checkbox" name="" id="check">
+        <label for="check">
+            <i class="fa-solid fa-bars" id="button"></i>        
+            <i class="fas fa-xmark" id="cancel"></i>
+        </label>
+        <div class="side-bar">
+            <header>
+                HR_Link
+            </header>
+            <ul>
+                <li><a href="{% url 'home'%}"><i class="fas fa-qrcode"></i>Manage Page</a></li>
+                <li><a href="{% url 'EmpTable'%}"><i class="fas fa-stream"></i>Table of Employees </a></li>
+                <li><a href="{% url 'about'%}"><i class="fas fa-circle-question"></i>About</a></li>
+                <li><a href="{% url 'services'%}"><i class="fas fa-sliders-h"></i>Services</a></li>
+                <li><a href="{% url 'contact'%}"><i class="fas fa-envelope"></i>Contact</a></li>
+				<li><a id="logout-link" onclick="logoutUser()" href="{% url 'login'%}"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
+                <script> 
+                    function logoutUser() {
+                        window.location.replace = "home_HR.html";
+                        history.pushState(null, null, location.href);
+                    }
+                </script>
+
+                
+
+            </ul>
+        </div>
+
+       
+    
+        <div id="header"></div>
+
+
+        <div class="d">
+            <h1>WHY CONTACT US…?</h1>
+            <div class="contain"><img class="img" src="{%static 'images/pngwing.com (3).png'%}" alt=""></div><br>
+
+            <p class="span">Your people matter. <br> We'll help you take care of them, so they can take care of your business.
+            </p><br><br>
+
+            <div class="container"> 
+                <p>
+                    We believe that every organization is unique, and we tailor our services to meet the specific needs of each client. 
+                    Our team consists of experienced HR consultants who are knowledgeable in all aspects of human resources.
+                </p>
+                <img class="img" src="{%static 'images/pngwing.com (5).png'%}" alt="">
+            </div> <br><br> 
+            
+            <div class="container">
+                <p>
+                    At HR Link, we are committed to building long-term relationships with our clients 
+                    and providing exceptional service and support. <a href="{% url 'services'%}">our services</a> 
+                </p>
+                <img class="img" src="{%static 'images/pngwing.com (16).png'%}" alt="">
+            </div> 
+            
+            
+            <div class="container last">
+                <p>
+                    We believe that when businesses have access to the right HR
+                     resources, 
+                    they can focus on what they do best - growing their business.
+
+                </p>
+                <img class="img" src="{%static 'images/pngwing.com (6).png'%}" alt="">
+            </div>  
+
+            <div class="container last">
+                <p id="last">
+                    Contact us today to see how we can help your organization thrive. 
+                    <a class=" last" href="mailto:engziad90@gmail.com">HR_Link@gmail.com</a>
+                </p>
+                
+            </div> 
+        </div>
+
+        <footer>
+            &copy; 2023 Human Resources Website all rights reserved
+          </footer>
+
+
+        
+       
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous">
+        </script>
+</body>
+{%endblock content%}
+</html>
+

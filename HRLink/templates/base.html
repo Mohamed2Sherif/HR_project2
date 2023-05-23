@@ -1,0 +1,67 @@
+{%load static%}
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Nav bar</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{%static 'css/navBarStyle.css'%}">
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+
+               <a href="{%url 'home'%}"> <img class="header-logo" src="{%static 'images/HR9.png'%}" alt="logo"></a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li class="header-lst-itm"><a class="header-link" href="{%url 'services'%}">Services</a></li>
+                    <li class="header-lst-itm"><a class="header-link" href="{%url 'contact'%}">Contact</a></li>
+                    <li class="header-lst-itm"><a class="header-link" href="{%url 'about'%}">About</a></li>
+                </ul>
+            </nav>
+            <a class="cta header-link" href="{%url 'logout' %}"><button class="header-button1">Logout</button></a>
+
+            <div class="toggle-button">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="dropdown-menu">
+                <li class="header-lst-itm"><a class="header-link" href="#">Services</a></li>
+                <li class="header-lst-itm"><a class="header-link" href="#">Projects</a></li>
+                <li class="header-lst-itm"><a class="header-link" href="#">About</a></li>
+                <li class="header-lst-itm"><a class="cta header-link" href="#"><button
+                            class="header-button2">Contact</button></a></li>
+            </div>
+        </header>
+        <main>
+            {% block content %}
+            {% endblock content %}
+        </main>
+       
+
+
+
+
+
+        <script>
+            const toggleBtn = document.querySelector('.toggle-button')
+const toggleBtnIcon = document.querySelector('.toggle-button i')
+const dropDownMenu = document.querySelector('.dropdown-menu')
+
+toggleBtn.onclick = function () {
+    dropDownMenu.classList.toggle('open')
+    const isOpen = dropDownMenu.classList.contains('open')
+
+    toggleBtnIcon.classList = isOpen 
+    ? 'fa-solid fa-xmark' 
+    : 'fa-solid fa-bars'
+}
+        </script>
+    
+    </body>
+</html>

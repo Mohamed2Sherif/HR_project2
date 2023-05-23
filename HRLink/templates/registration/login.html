@@ -1,0 +1,140 @@
+{%extends 'base.html'%}
+{%load static%}
+<html lang="en">
+    {%block content%}
+    <head>
+        <link rel="stylesheet" href="{%static 'css/login.css'%}">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{%static 'css/Login_Create.css'%}">
+        <link rel="stylesheet" href="{%static 'css/navBarStyle.css'%}">
+        <link rel="stylesheet" href="{%static 'css/sideNavBar.css'%}">
+        <link rel="stylesheet" href="{%static 'css/login.css'%}">
+        <title>Login</title>
+        <script>
+            function noBack() { window.history.forward() }
+                window.onload = noBack;
+            </script>
+    </head>
+
+    <body>
+
+        <input type="checkbox" name="" id="check">
+        <label for="check">
+            <i class="fa-solid fa-bars" id="button"></i>
+            <i class="fas fa-xmark" id="cancel"></i>
+        </label>
+        <div class="side-bar">
+            <header>
+                HR_Link
+            </header>
+            <ul>
+                <li><a href="../about.html"><i class="fas fa-circle-question"></i>About</a></li>
+                <li><a href="../services.html"><i class="fas fa-sliders-h"></i>Services</a></li>
+                <li><a href="../contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+                <li><a id="logout-link" onclick="logoutUser()"
+                        href="Authentication pages/login.html"><i
+                            class="fa-solid fa-right-from-bracket"></i>Login</a></li>
+            </ul>
+        </div>
+
+
+
+
+        <!-- <form class="login-form" action="home.html">
+            <div class="section" class="box">
+                <label for="mail">Username: </label>
+                <input id="mail" type="email" required placeholder="Email Address">
+            </div>
+
+            <div class="section" class="box">
+                <label for="id">Password: </label>
+                <input id="id" type="password" required placeholder="ID">
+            </div>
+
+            <input type="submit" class = "submit" value="Login">
+            <br>
+            <a class="create-link" href="create.html">Create New Account</a>
+            <br>
+            <a class="forget-link" href="forget_1.html">Forget password</a>
+        </form> -->
+        <div class="wrapper">
+            <div class="form-box login">
+                <h2>Login</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in login_form %}
+
+                    <p>
+
+                        <div class="input-box">
+                            {{field}}
+                           <label>
+                             {{field.label_tag}}
+                            </label>
+
+
+
+                        </div>
+                        {% for error in field.errors %}
+                    <p style="color:red;">{{error}}</p>
+                        {% endfor %}
+                    </p>
+
+                    {% if login_form.non_field_errors %}
+
+                    <p>
+                        <p style="color:red;">{{login_form.non_field_errors}}</p>
+                    </p>
+                    {% endif %}
+
+                    {% endfor %}
+                    <button class="submit-button" type="submit">Login</button>
+
+                  </form>
+
+            </div>
+        </div>
+          <footer>
+            &copy; 2023 Human Resources Website all rights reserved
+        </footer>
+
+        <!--  for the header -->
+
+
+        <script src="{%static 'js/navBar.js'%}"></script>
+        
+
+    </body>
+    {%endblock content%}
+
+</html>
+
+
+<!--<div class="wrapper">-->
+<!--            <div class="form-box login">-->
+<!--                <h2>Login</h2>-->
+<!--                <form action="#">-->
+<!--                    <div class="input-box">-->
+<!--                        <span class="icon"><i></i></span>-->
+<!--                        <input type="email" name="email" id="" required>-->
+<!--                       <label>Email</label>-->
+<!--                    </div>-->
+<!--                    <div class="input-box">-->
+<!--                        <span class="icon"><i></i></span>-->
+<!--                        <input type="password" name="pass" id="" required>-->
+<!--                       <label>Password</label>-->
+<!--                    </div>-->
+<!--                    <div class="remember-forget">-->
+<!--                        <label><input type="checkbox" name="" id="">Remember me</label>-->
+<!--                        <a href="#">Forget Password?</a>-->
+<!--                    </div>-->
+<!--                    <input class="submit-button" type="submit" value="Login">-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+

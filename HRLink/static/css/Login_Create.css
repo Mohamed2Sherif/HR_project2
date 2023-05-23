@@ -1,0 +1,141 @@
+body{
+    background-color: #091d26;
+    height: 190vh;
+    scroll-behavior: smooth;
+}
+
+.create-form {
+    display: block;
+    color: rgb(0, 0, 0);
+    padding: 40px 40px;
+}
+
+.login-form {
+    padding-top: 100px;
+    height: 420px;
+}
+
+.create-form,
+.login-form,
+.forget-form{
+    text-align: center;
+    /* color: rgb(0, 0, 0); */
+    color: rgba(255, 255, 255, 0.767);
+    border: solid rgb(0, 0, 0);
+    border-radius: 20px;
+    width: 510px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 70px;
+    background-position: center center;
+    background-color: rgba(228, 228, 228, 0.76);
+    overflow: hidden;
+}
+
+.forget-form {
+    padding: 20px;
+    width: 530px;
+}
+
+.forget-form h3 {
+    margin-top: 30px;
+    color: #6a6a6a;
+}
+
+@media (max-width: 600px) {
+    .create-form,
+    .login-form,
+    .forget-form{
+        width: 450px;
+    }
+} 
+
+.section{
+    /* display: table-row; */
+    /* font-family: Fantasy; */
+    /* background-position: center center; */
+    margin-top: 25px;
+    margin-bottom: 25px;
+    
+}
+
+.section label{
+    /* display: table-cell; */
+    /* padding: 2px; */
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    color: rgba(44, 44, 44, 0.776);
+    /* background-position: center center; */
+}
+
+.section input{
+    /* display: table-cell; */
+    font-size: 20px;
+}
+
+
+
+.login_button{
+    background-color: rgb(199, 194, 194);
+    border-radius: 5px;
+    padding: 3px;
+    margin: 15px;
+}
+
+button a{
+    text-decoration: none;
+    color: black;
+}
+
+
+.submit{
+    margin-bottom: 30px;
+    padding: 6px;
+    border: 1px solid black ;
+    border-radius: 5px;
+    color:white ;
+}
+
+.create-link{
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 4px;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    
+    color:white ;
+}
+
+.submit, .create-link{
+    background: linear-gradient(#2e2e2e89, #999 );
+    font-size: 14px;
+}
+
+.forget-link {
+    display: block;
+    text-decoration: none;
+    color: rgb(105, 105, 105);
+    margin-bottom: 20px;
+}
+
+footer {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(1, 19, 37, 0.5);
+    color: white;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: 100;
+    backdrop-filter: blur(5px);
+}
+
+
+

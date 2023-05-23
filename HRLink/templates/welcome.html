@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>welcome HR</title>
+    <link rel="stylesheet" href="welcome.css">
+    <link rel="stylesheet" href="Authentication pages/nav bar/navBarStyle.css">
+    <link rel="stylesheet" href="side_nav_bar/sideNavBar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="menu.css">
+
+    <script>
+      setTimeout(function(){
+      window.location.href = "home_HR.html";
+      }, 5000);
+    </script>
+</head>
+<body>
+
+
+  
+  <div class="imaage">
+    <img src="pngwing.com (10).png" alt="">
+  </div>
+
+  <div class="type">
+    <h1>People are the heart of your business. <br> Let us help you take care of them...</h1> <br><br>
+ 
+     <div class="typewriter">
+       <h2 id="text"> At HR Link, we link you to the right people, processes, and technology...
+
+        <br><br><br><span>Let's Go!</span> 
+       </h1>
+     </div>
+
+  </div>
+
+
+    
+  
+
+    <script>
+        var i = 0;
+      // var A = 0;
+        var tag = document.getElementById("text");
+        var html = document.getElementById("text").innerHTML;
+        var attr = tag.setAttribute("data", html);
+        var txt = tag.getAttribute("data");
+        var speed = 25;
+
+        function typeWriter() {
+          if (i <= txt.length) {
+            document.getElementById("text").innerHTML = txt.slice(0 , i + 1);
+            i++;
+            setTimeout(typeWriter, speed);
+          }
+            //console.log(document.getElementById("text").innerHTML);
+        }
+
+      typeWriter();
+
+
+    // function deltxt() {
+    //      if (A <= txt.length) {
+        //      document.getElementById("text").innerHTML = txt.slice(0, -A);
+        //      A++;
+        //      setTimeout(deltxt, 50);
+        //    }
+        // }
+        // var backward = speed * txt.length + 1000   ;
+        // // console.log(backward);
+        // setTimeout( function () {
+        //  deltxt();
+        // },backward);
+    </script>
+</body>
+</html>

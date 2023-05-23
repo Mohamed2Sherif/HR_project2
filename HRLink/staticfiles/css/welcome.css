@@ -1,0 +1,116 @@
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400');
+  *{
+    margin: 0;
+  }
+
+  @font-face {
+    font-family: nos;
+    src: url(font/CarlGauss_PERSONAL_USE_ONLY.otf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    
+    color: white;
+}
+
+  body{
+    background: #3AAFA9;
+    height: 100vh !important ;
+  color: white;box-shadow: inset -53px -41px 198px #379E99, inset 95px -2px 200px #379e99;
+display:flex;align-items:center;height:100vh;justify-content: flex-start;flex-direction: column;
+  }
+  .typewriter {
+    width: 100% !important;
+    font-family: 'Anonymous Pro', monospace;
+    width: 70%;  
+    text-align: center;
+    padding: 5px;
+    /* border: 3px solid green; */
+  }
+  h1 {
+    font-family: nos;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    display: inline-block;
+    font-weight: normal;
+    text-align: center;
+    font-size: 1.3em;
+    
+    
+  }
+  h1:after{
+   content: '';
+    display: inline-block;
+    background-color: white;
+    margin-left: 2px;
+    height: 25px;
+    width: 4px;
+    animation: cursor 0.4s infinite;
+  }
+
+  h2 {
+    width: 100%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    overflow: hidden;
+    margin: 0 auto;
+    display: inline-block;
+    font-weight: normal;
+    text-align: center;
+    color: white;
+    font-size: 1.3em;
+    text-align: center;
+    /* border: 3px solid red;; */
+  }
+
+  footer {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(1, 19, 37, 0.5);    color: white;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: 100;
+    backdrop-filter: blur(5px);
+  }
+
+  
+
+  .imaage {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin-bottom: 50px;
+  }
+
+  img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .type {
+    text-align: center;
+    width: 100%;
+    /* border: 3px solid white; */
+  }
+
+  .type .typewriter span {
+    color: rgb(255, 205, 113);
+    font-size: 1.5em;
+    text-shadow: 4px 8px 3px rgba(255, 255, 255, 0.183);
+  }
+
+  /* The typewriter cursor effect */
+  @keyframes cursor {
+    0% { opacity: 1; }
+      49% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 0; }
+  }

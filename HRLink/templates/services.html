@@ -1,0 +1,112 @@
+{%extends "base.html"%}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    {%block content%}
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>services</title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{%static 'css/footer.css'%}">
+        <link rel="stylesheet"
+            href="{%static 'fonts/CarlGauss_PERSONAL_USE_ONLY.otf'%}">
+        <link rel="stylesheet" href="{%static 'css/sideNavBar.css'%}">
+        <link rel="stylesheet" href="{%static 'css/navBarStyle.css'%}">
+        <link rel="stylesheet" href="{%static 'css/menu.css'%}">
+        <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <input type="checkbox" name id="check">
+        <label for="check">
+            <i class="fa-solid fa-bars" id="button"></i>
+            <i class="fas fa-xmark" id="cancel"></i>
+        </label>
+        <div class="side-bar">
+            <header>
+                HR_Link
+            </header>
+            <ul>
+                <li><a href="{% url 'home'%}"><i class="fas fa-qrcode"></i>Manage
+                        Page</a></li>
+                <li><a href="{% url 'EmpTable'%}"><i class="fas fa-stream"></i>Table
+                        of Employees </a></li>
+                <li><a href="{% url 'about'%}"><i class="fas fa-circle-question"></i>About</a></li>
+                <li><a href="{% url 'services'%}"><i class="fas fa-sliders-h"></i>Services</a></li>
+                <li><a href="{% url 'contact'%}"><i class="fas fa-envelope"></i>Contact</a></li>
+                <li><a id="logout-link" onclick="logoutUser()"
+                        href="{% url 'login'%}"><i
+                            class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
+                <script> 
+                    function logoutUser() {
+                        window.location.replace = "home_HR.html";
+                        history.pushState(null, null, location.href);
+                    }
+                </script>
+
+            </ul>
+        </div>
+
+        
+
+        <div class="d">
+            <h1>HR Link</h1>
+            <h3>
+                <br> provides a comprehensive suite of services to help
+                organizations streamline their human resources management. <br>
+                Our website is designed to simplify your HR processes, allowing
+                you to focus on what matters most – your people.
+            </h3>
+
+            <p class="span">Our services include:...</p><br><br>
+
+            <div class="container">
+                <p>
+                    Streamlined HR Management: With our user-friendly system,
+                    managing employee information, vacation requests, and
+                    approvals has never been easier. Say goodbye to tedious
+                    paperwork and hello to efficient HR management.
+
+                </p>
+                <img class="img" src="{%static 'images/pngwing.com (20).png'%}" alt>
+            </div> <br><br>
+
+            <div class="container">
+                <p>
+                    Increased Productivity: By automating HR processes,
+                    your team can spend less time on administrative tasks and
+                    more time on important work.
+                    This translates to increased productivity and better results
+                    for your business.
+                </p>
+                <img class="img" src="{%static 'images/pngwing.com (17).png'%}" alt>
+            </div>
+
+            <div class="container last">
+                <p>
+                    Enhanced Data Security: Our system is designed with data
+                    security in mind,
+                    so you can rest assured that your employee information is
+                    safe and protected.
+                    Say goodbye to manual record-keeping and hello to secure HR
+                    management.
+                </p>
+                <img class="img" src="{%static 'images/services 2.png'%}" alt>
+            </div>
+        </div>
+
+        <footer>
+            &copy; 2023 Human Resources Website all rights reserved
+        </footer>
+
+    </body>
+    {%endblock content%}
+
+</html>

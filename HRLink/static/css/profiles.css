@@ -1,0 +1,125 @@
+* {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+body.profile-body {
+	height: 220vh;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(#01012e,#572121);
+	background-repeat: no-repeat; 
+	/* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75); */
+}
+
+header.profile-header {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+	text-align: center;
+}
+
+.profile-header h1 {
+	margin: 0;
+	font-size: 40px;
+}
+
+main.profile-main {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 40px;
+}
+
+ .vac-info, .salary{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff;
+	border-radius: 20px;
+	box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+	margin: 20px;
+	padding: 40px;
+	text-align: center;
+	width: 500px;
+	height: 530px;
+
+}
+.data
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff;
+	border-radius: 20px;
+	box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+	margin: 20px;
+	padding: 40px;
+	text-align: center;
+	width: 500px;
+	height: 530px;
+}
+
+.profile-main .salary {
+	height: 200px;
+	margin-top: -50px;
+}
+
+
+
+.profile-picture {
+	height: 200px;
+	margin-bottom: 20px;
+	width: 200px;
+	border-radius: 50%;
+	margin-top: -170px;
+}
+
+.profile-main section .data-item {
+	margin: 10px 0;
+	font-size: 20px;
+}
+
+.edit-prof {
+	background-color: #333;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 20px;
+	padding: 20px;
+	margin: 5px;
+}
+.req-vac
+{
+	background-color: #333;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 20px;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+.edit-prof:hover, .req-vac:hover {
+	background-color: #555;
+}
+
+footer {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+    height: 70px;
+	background-color: rgba(1, 19, 37, 0.5);    color: white;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: 100;
+    backdrop-filter: blur(5px);
+  }
