@@ -22,6 +22,6 @@ from HR.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls, name="admin"),
-    path("", include("HR.urls")),
+    path("", include("HR.urls"),),
     # path("accounts/", include("django.contrib.auth.urls")),  ## acccounts
 ]

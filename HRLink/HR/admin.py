@@ -14,7 +14,7 @@ class AccountAdmin(UserAdmin):
     fieldsets = ()
 
 class emp(admin.ModelAdmin):
-    list_display = ('Name', 'accId')
+    list_display = ('Name', 'accId','email')
     search_fields = ('Name', 'accId')
 
 

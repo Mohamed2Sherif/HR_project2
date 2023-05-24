@@ -1,24 +1,29 @@
+{%extends 'base.html'%}
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Table</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {%block content%}
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Employee Table</title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="side_nav_bar/sideNavBar.css">
-    <link rel="stylesheet" href="Authentication pages/nav bar/navBarStyle.css">
-    <link rel="stylesheet" href="table.css">
-	<!-- <link rel="stylesheet" href="/website Pages/Authentication pages/nav bar/navBarStyle.css"> -->
-</head>
-<body>
-    <input type="checkbox" name="" id="check">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{%static 'css/sideNavBar.css'%}">
+        <link rel="stylesheet" href="{%static 'css/navBarStyle.css'%}">
+        <link rel="stylesheet" href="{%static 'css/table.css'%}">
+        <!-- <link rel="stylesheet" href="/website Pages/Authentication pages/nav bar/navBarStyle.css"> -->
+    </head>
+    <body>
+        <input type="checkbox" name id="check">
         <label for="check">
-            <i class="fa-solid fa-bars" id="button"></i>        
+            <i class="fa-solid fa-bars" id="button"></i>
             <i class="fas fa-xmark" id="cancel"></i>
         </label>
         <div class="side-bar">
@@ -26,12 +31,16 @@
                 HR_Link
             </header>
             <ul>
-                <li><a href="{% url 'home'%}"><i class="fas fa-qrcode"></i>Manage Page</a></li>
-                <li><a href="{% url 'EmpTable'%}"><i class="fas fa-stream"></i>Table of Employees </a></li>
+                <li><a href="{% url 'home'%}"><i class="fas fa-qrcode"></i>Manage
+                        Page</a></li>
+                <li><a href="{% url 'EmpTable'%}"><i class="fas fa-stream"></i>Table
+                        of Employees </a></li>
                 <li><a href="{% url 'about'%}"><i class="fas fa-circle-question"></i>About</a></li>
                 <li><a href="{% url 'services'%}"><i class="fas fa-sliders-h"></i>Services</a></li>
                 <li><a href="{% url 'contact'%}"><i class="fas fa-envelope"></i>Contact</a></li>
-				<li><a id="logout-link" onclick="logoutUser()" href="{% url 'login'%}"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
+                <li><a id="logout-link" onclick="logoutUser()"
+                        href="{% url 'login'%}"><i
+                            class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
                 <script> 
                     function logoutUser() {
                         window.location.replace = "home_HR.html";
@@ -39,91 +48,61 @@
                     }
                 </script>
 
-               
-
             </ul>
         </div>
 
-        <header class="header">
-			<img class="header-logo" src="/website Pages/Authentication pages/HR9.png" alt="logo">
-			<nav>
-				<ul class="nav-links">
-					<li class="header-lst-itm"><a class="header-link" href="{% url 'services'%}">Services</a></li>
-					<li class="header-lst-itm"><a class="header-link" href="{% url 'about'%}">About</a></li>
-					<li class="header-lst-itm"><a class="header-link" href="{% url 'contact'%}">Contact</a></li>
-				</ul>
-			</nav>
-			<a class="cta header-link" href="{% url 'login'%}"><button class="header-button1">Log out</button></a>
-			<div class="toggle-button">
-				<!-- <i class="fa-solid fa-bars"></i>  -->
-			</div>
-			<!-- <div class="dropdown-menu">
-				<li class="header-lst-itm"> <a class="header-link" href="#">Services</a></li>
-				<li class="header-lst-itm"><a class="header-link" href="#">Projects</a></li>
-				<li class="header-lst-itm"><a class="header-link" href="#">About</a></li>
-				<li class="header-lst-itm"><a class="cta header-link" href="Authentication pages/login.html"><button class="header-button2">Log out</button></a></li>
-			</div> -->
-		</header>   
+        <div class="table-container">
+            <form method="GET">
+            <div class="search">
 
-    <div class="table-container">
+                <label for="key">Search</label>
+                <input type="text" name="que" id="key">
+            </div>
+        </form>
+            <table id='table'>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>address</th>
+                    <th>phone</th>
+                    <th>gender</th>
+                    <th>availableVac</th>
+                    <th>actualVac</th>
+                    <th>salary</th>
+                    <th>birthDate</th>
+                    <th>update</th>
+                    <th>delete</th>
+                </tr>
 
-        <div class="search">
+                {% if employees %}
+                {% for each_emp in employees %}
+                <tr>
+                    <td> {{each_emp.accId}} </td>
+                    <td class="header-lst-itm"><i><a class="header-link" href="{%url 'profile' pk=each_emp.pk%}"> {{each_emp.Name}} </a></i></td>
+                    <td>{{each_emp.email}} </td>
+                    <td>{{each_emp.address}} </td>
+                    <td>{{each_emp.phone}} </td>
+                    <td>{{each_emp.gender}} </td>
+                    <td>{{each_emp.availableVac}} </td>
+                    <td>{{each_emp.approvedVac}} </td>
+                    <td>{{each_emp.salary}} </td>
+                    <td>{{each_emp.Birth_date}} </td>
+                    <td class="header-lst-itm"><i><a class="header-link"href="{%url 'updating' pk=each_emp.pk%}">update</a></i>
+                    </td>
+                    <td class="header-lst-itm"><i><a class="header-link"href="{%url 'emp_delete' accId=each_emp.accId%}?empname={{each_emp.Name}}">delete</a></i> </td>
+                </tr>
 
-            <label for="key">Search</label>
-            <input type="text" name="key" id="key">
+                {% endfor %}
+                {% endif %}
+            </table>
         </div>
-    
-        <table id = 'table'>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>address</th>
-                <th>phone</th>
-                <th>gender</th>
-                <th>availableVac</th>
-                <th>actualVac</th>
-                <th>salary</th>
-                <th>birthDate</th>
-                <th>update</th>
-                <th>delete</th>
-            </tr>
-    
-            <!-- <tr>
-                <td>1</td>
-                <td>Ahmed</td>
-                <td>a@gmail.com</td>
-                <td><button class="update">update</button></td>
-                <td><button class="delete">delete</button></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Ahmed</td>
-                <td>a@gmail.com</td>
-                <td><button class="update">update</button></td>
-                <td><button class="delete">delete</button></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Ahmed</td>
-                <td>a@gmail.com</td>
-                <td><button class="update">update</button></td>
-                <td><button class="delete">delete</button></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Ahmed</td>
-                <td>a@gmail.com</td>
-                <td><button class="update">update</button></td>
-                <td><button class="delete">delete</button></td>
-            </tr> -->
-        </table>
-    </div>
 
-    <footer>
-        &copy; 2023 Human Resources Website all rights reserved
-      </footer>
+        <footer>
+            &copy; 2023 Human Resources Website all rights reserved
+        </footer>
 
-    <script src="table.js"></script>
-</body>
+        <script src="{%static 'js/table.js'%}"></script>
+    </body>
+    {%endblock content%}
 </html>
