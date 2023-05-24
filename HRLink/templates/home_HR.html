@@ -88,7 +88,7 @@
 
         <div class="form-popup" id="delete">
 
-            <form action="{% url 'delete_employee' %}" class="form-container" method="post">
+            <form action="{% url 'delete_employee'%}" class="form-container" method="post">
                 {% csrf_token %}
                 <h2>Delete Employee</h2>
                 <br>
@@ -112,12 +112,12 @@
         <button class="open-button" onclick="openForm(3)">Search Employee Information</button><br><br>
 
         <div class="form-popup" id="search">
-            <form action="/action_page.php" class="form-container">
+            <form class="form-container" action="{% url 'EmpTable' %}" method="GET">
 
                 <h2>Search Employee Information</h2>
                 <br>
                 <label for="search-name">Name:</label>
-                <input type="text" id="search-name" name="search-name">
+                <input type="text" id="search-name" name="Name">
                 <!--<input type="submit" value="Search"> -->
 
                 <button type="submit" class="btn">Search</button>
