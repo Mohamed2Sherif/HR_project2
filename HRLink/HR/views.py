@@ -1,5 +1,5 @@
 from random import randint, choice
-from datetime import date, timedelta
+from datetime import date, timedelta,datetime
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Account, Employee
@@ -277,18 +277,28 @@ def generate_objects(num_objects):
         )
         obj.save()
 
+def date_from_string(date_str):
+    """Convert a date string in the format 'YYYY-MM-DD' to a date object"""
+    return datetime.strptime(date_str, '%Y-%m-%d').date()
+
 
 def request_vacation(request):
     if request.method == 'POST' :
         employee_id = request.POST.get("employee_id")
         employee = Employee.objects.get(accId=employee_id)
+        employee_pk = employee.pk
 
-        if employee.availableVac > 0:
-            employee.availableVac = employee.availableVac - 1
-            employee.approvedVac = employee.approvedVac + 1
+        firstdate = request.POST.get("from-date")
+        firstdate = date_from_string(firstdate)
+        secondate = request.POST.get("to-date")
+        secondate = date_from_string(secondate)
+        finaldate= secondate - firstdate
+        if employee.availableVac > finaldate.days:
+            employee.availableVac = employee.availableVac - finaldate.days
+            employee.approvedVac = employee.approvedVac + finaldate.days
             employee.save()
             messages.add_message(request, messages.SUCCESS, 'vacation requested ;D')
         else:
             messages.add_message(request, messages.WARNING, 'This Employee does not have any available vacations =( ')
 
-    return redirect('home')
+    return redirect('profile',pk=employee_pk)
