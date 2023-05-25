@@ -62,7 +62,9 @@
 				<h2>Vacation Days</h2>
 				<p>Available:{{employee.availableVac}}</p>
 				<p>Approved: {{employee.approvedVac}}</p><br>
-				<button class="req-vac"actio="">Request Vacation</button>
+				<form action ="{%url 'home'%}" >
+				<button class="req-vac"	type="submit" >Request Vacation</button>
+				</form>
 			</section>
 		</main>
 		<main class="profile-main">
