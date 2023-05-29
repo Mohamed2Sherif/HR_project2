@@ -336,7 +336,7 @@ class view_vacations(ListView):
 
 
 def accept_view(request):
-    id = request.GET['id']
+    id = request.GET.get('id')
     employee = Employee.objects.get(accId=id)
     if request.method == 'GET':
         if 'Accept' in request.GET:

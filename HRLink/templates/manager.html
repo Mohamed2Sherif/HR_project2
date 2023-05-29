@@ -39,17 +39,18 @@
                         <td>{{ vac.end_date }}</td>
                         <td>{{ vac.reason }}</td>
                         <td>
-                            <form method="get" action="{% url 'accept' %}">
-                                <input type="hidden" name="id"
-                                    value="{{ vac.employee }}">
-                                <input type="hidden" name="start"
-                                    value="{{ vac.start_date }}">
-                                <input type="hidden" name="end"
-                                    value="{{ vac.end_date }}">
-                                <button type="submit"
-                                    class="btn btn-success me-2">Accept</button>
-                                <button type="submit" class="btn btn-danger"
-                                    name="Decline">Decline</button>
+                            <form method="GET"  action="{% url 'accept'%}">
+                                <input type="hidden" name="id" id="id"
+                                    value={{ vac.employee }}>
+                                <input type="hidden" name="start" id="start"
+                                    value={{ vac.start_date }}>
+                                <input type="hidden" name="end" id="end"
+                                    value={{ vac.end_date }}>
+                                <input type="submit"
+                                    class="btn btn-success me-2" value="Accept"
+                                    name="Accept">
+                                <input type="submit" class="btn btn-danger"
+                                    value="Decline" name="Decline">
                             </form>
                         </td>
                     </tr>
