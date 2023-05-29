@@ -24,35 +24,7 @@
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <input type="checkbox" name id="check">
-        <label for="check">
-            <i class="fa-solid fa-bars" id="button"></i>
-            <i class="fas fa-xmark" id="cancel"></i>
-        </label>
-        <div class="side-bar">
-            <header>
-                HR_Link
-            </header>
-            <ul>
-                <li><a href="{% url 'home'%}"><i class="fas fa-qrcode"></i>Manage
-                        Page</a></li>
-                <li><a href="{% url 'EmpTable'%}"><i class="fas fa-stream"></i>Table
-                        of Employees </a></li>
-                <li><a href="{% url 'about'%}"><i class="fas fa-circle-question"></i>About</a></li>
-                <li><a href="{% url 'services'%}"><i class="fas fa-sliders-h"></i>Services</a></li>
-                <li><a href="{% url 'contact'%}"><i class="fas fa-envelope"></i>Contact</a></li>
-                <li><a id="logout-link" onclick="logoutUser()"
-                        href="{% url 'login'%}"><i
-                            class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
-                <script> 
-                    function logoutUser() {
-                        window.location.replace = "home_HR.html";
-                        history.pushState(null, null, location.href);
-                    }
-                </script>
-
-            </ul>
-        </div>
+        
 
         
 

@@ -14,7 +14,7 @@ from django.views.generic import (
     DetailView,
     ListView,
 )
-
+from django.forms import ValidationError
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse
 from django.urls import reverse_lazy, reverse
@@ -340,12 +340,16 @@ def accept_view(request):
     employee = Employee.objects.get(accId=id)
     if request.method == 'GET':
         if 'Accept' in request.GET:
+            
             firstdate = request.GET.get("start")
             frstdate = date_from_string(firstdate)
             secondate = request.GET.get("end")
             secdate = date_from_string(secondate)
             finaldate = secdate - frstdate
             vac = vacation.objects.get(employee=id)
+            if employee.availableVac ==0 : 
+                vac.delete()
+                return redirect("requested")
             if employee.availableVac > finaldate.days:
                 employee.availableVac = employee.availableVac - finaldate.days
                 employee.approvedVac = employee.approvedVac + finaldate.days
@@ -356,3 +360,7 @@ def accept_view(request):
             vac = vacation.objects.get(employee=id)
             vac.delete()
             return redirect("requested")
+class EmpTable(ListView) :
+    model = Employee
+    template_name = "EmpTable.html"
+    context_object_name=  "employees"

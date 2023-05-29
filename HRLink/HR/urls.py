@@ -25,4 +25,5 @@ urlpatterns = [
     path("vacation/", request_vacation, name="vacation"),
     path("requests/", view_vacations.as_view(), name="requested"),
     path("acceptance",accept_view,name="accept"),
+    path("Listemployee",EmpTable.as_view(),name="ListEmp")
 ]
