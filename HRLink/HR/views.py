@@ -2,7 +2,7 @@ from random import randint, choice
 from datetime import date, timedelta,datetime
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from .models import Account, Employee
+from .models import Account, Employee, vacation
 from .forms import RegistrationForm, AddForm, AccountAuthenticationForm
 from django.db.models import Q
 from django.views.generic import (
@@ -312,20 +312,47 @@ def request_vacation(request):
         employee_pk = employee.pk
 
         firstdate = request.POST.get("from-date")
-        firstdate = date_from_string(firstdate)
+        frstdate = date_from_string(firstdate)
         secondate = request.POST.get("to-date")
-        secondate = date_from_string(secondate)
-        finaldate= secondate - firstdate
-        if employee.availableVac > finaldate.days:
-            employee.availableVac = employee.availableVac - finaldate.days
-            employee.approvedVac = employee.approvedVac + finaldate.days
-            employee.save()
-            messages.add_message(request, messages.SUCCESS, 'vacation requested ;D')
-        else:
-            messages.add_message(request, messages.WARNING, 'This Employee does not have any available vacations =( ')
+        reason = request.POST.get("reason")
+        secdate = date_from_string(secondate)
+        finaldate= secdate - frstdate
 
-    return redirect('profile',pk=employee_pk)
+        vacation.objects.create(start_date=firstdate,end_date=secondate,employee=employee_id,reason=reason)
+
+    return redirect('home')
 
 
 def welcome_view(request):
     return render(request,"welcome.html",{})
+#
+# def view_vacation(request):
+#     return render(request,"manager.html",{})
+
+class view_vacations(ListView):
+    template_name = "manager.html"
+    model = vacation
+    context_object_name = "vacations"
+
+
+def accept_view(request):
+    id = request.GET['id']
+    employee = Employee.objects.get(accId=id)
+    if request.method == 'GET':
+        if 'Accept' in request.GET:
+            firstdate = request.GET.get("start")
+            frstdate = date_from_string(firstdate)
+            secondate = request.GET.get("end")
+            secdate = date_from_string(secondate)
+            finaldate = secdate - frstdate
+            vac = vacation.objects.get(employee=id)
+            if employee.availableVac > finaldate.days:
+                employee.availableVac = employee.availableVac - finaldate.days
+                employee.approvedVac = employee.approvedVac + finaldate.days
+                employee.save()
+                vac.delete()
+                return redirect("requested")
+        if 'Decline' in request.GET:
+            vac = vacation.objects.get(employee=id)
+            vac.delete()
+            return redirect("requested")

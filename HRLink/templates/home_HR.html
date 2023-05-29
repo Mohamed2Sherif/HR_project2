@@ -98,7 +98,16 @@
                 <button type="button" class="btn cancel" onclick="Close()">Close</button>
             </form>
         </div>
+        {% if request.user.is_admin %}
 
+        <pre><a href="{% url 'requested' %}" class="open-button"> View requested vacations</a></pre>
+
+        <div class="form-popup" id="vacationRequest">
+        <script src="{%static 'js/Main.js'%}"></script>
+        <script src="{%static 'js/navBar.js'%}"></script>
+        </div>
+
+        {% else %}
         <button class="open-button" onclick="openForm(4)">Vacation Request</button><br><br>
 
         <div class="form-popup" id="vacationRequest">
@@ -116,14 +125,14 @@
                 <input type="date" id="to-date" name="to-date"><br><br>
 
                 <label for="reason">Reason:</label>
-                <textarea id="reason" name="reason"></textarea><br><br>
+                <input type="text" id="reason" name="reason"><br><br>
                 <input type="hidden" id="status" name="status" value="submitted">
                 <!--<button onclick="location.href='submit_vacation.html'">Submit Vacation Request</button> -->
             <!-- <button data-target="vacationRequest">Submit Vacation Request </button>-->
-            
+
                 <button type="submit" class="btn">Submit</button>
 
-                
+
 
                 <button type="button" class="btn cancel" onclick="Close()">Close</button>
 
@@ -131,6 +140,7 @@
         <script src="{%static 'js/Main.js'%}"></script>
         <script src="{%static 'js/navBar.js'%}"></script>
         </div>
+        {% endif %}
 
         <img class="img" src="{%static 'images/pngwing.com (2).png'%}" alt="">
 

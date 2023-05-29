@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block content %}
+{% for vac in vacations %}
+    {{vac.employee}}
+    {{vac.start_date}}
+    {{vac.end_date}}
+    {{vac.reason}}
+
+<form method="get" action="{% url 'accept'%}">
+    <input type="hidden" name="id" id="id" value={{vac.employee}}>
+    <input type="hidden" name="start" id="start" value={{vac.start_date}}>
+    <input type="hidden" name="end" id="end" value={{vac.end_date}}>
+    <input type="submit" value="Accept"  name="Accept">
+    <input type="submit" value="Decline" name="Decline">
+</form>
+
+{% endfor %}
+
+{% endblock content %}

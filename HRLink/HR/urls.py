@@ -23,4 +23,6 @@ urlpatterns = [
     path("EmpTable", employee_List, name="EmpTable"),
     path("EmpTableredirect",list_after_delete,name="ladelete"),
     path("vacation/", request_vacation, name="vacation"),
+    path("requests/", view_vacations.as_view(), name="requested"),
+    path("acceptance",accept_view,name="accept"),
 ]
