@@ -191,6 +191,29 @@ def list_after_delete(request):
         employeelist = Employee.objects.filter(Q(Name__icontains=Name))
         context = {"employees": employeelist}
 
+    if request.GET.get('que') == "" or request.GET.get('Name') == "":
+        employeelist = Employee.objects.all()
+        context = {"employees": employeelist}
+        return render(request, "EmpTable.html", context)
+    if request.method == "GET":
+
+        if ("que" in request.GET) and request.GET["que"].strip():
+            query_string = request.GET['que']
+            employeelist = Employee.objects.filter(
+                Name__icontains=query_string,
+                email__icontains=query_string,
+            )
+            context = {"employees": employeelist}
+            return render(request, "EmpTable.html", context)
+        else:
+            Name = request.GET.get("Name")
+            try:
+                employeelist = Employee.objects.filter(Q(Name__icontains=Name))
+                context = {"employees": employeelist}
+
+                return render(request, "EmpTable.html", context)
+            except:
+                pass
         return render(request, "EmpTable.html", context)
 
 # def employee_detail(request,employee_id):
@@ -302,3 +325,7 @@ def request_vacation(request):
             messages.add_message(request, messages.WARNING, 'This Employee does not have any available vacations =( ')
 
     return redirect('profile',pk=employee_pk)
+
+
+def welcome_view(request):
+    return render(request,"welcome.html",{})

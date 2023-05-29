@@ -7,7 +7,8 @@ urlpatterns = [
     # path("", home_view, name="welcome"),
     path("home/", home_view, name="home"),  # home_HR.html
     # admin
-    path("", login_view, name="login"),  # login.html
+    path("", welcome_view, name="welcome"),
+    path("login/", login_view, name="login"),  # login.html
     path("register/", registration_view, name="register"),  # add.html
     path("logout/", logoutview, name="logout"),  # logout
     path("about/", about_view, name="about"),  # about.html

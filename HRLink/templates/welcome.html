@@ -1,22 +1,23 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>welcome HR</title>
-    <link rel="stylesheet" href="welcome.css">
-    <link rel="stylesheet" href="Authentication pages/nav bar/navBarStyle.css">
-    <link rel="stylesheet" href="side_nav_bar/sideNavBar.css">
+    <link rel="stylesheet" href="{%static 'css/welcome.css'%}">
+    <link rel="stylesheet" href="{%static 'css/navBarStyle.css'%}">
+    <link rel="stylesheet" href="{%static 'css/sideNavBar.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="{%static 'css/menu.css'%}">
 
     <script>
       setTimeout(function(){
-      window.location.href = "home_HR.html";
+      window.location.href = "{% url 'login'%}";
       }, 5000);
     </script>
 </head>
@@ -25,7 +26,7 @@
 
   
   <div class="imaage">
-    <img src="pngwing.com (10).png" alt="">
+    <img src="{% static 'images/pngwing.com (10).png' %}" alt="">
   </div>
 
   <div class="type">

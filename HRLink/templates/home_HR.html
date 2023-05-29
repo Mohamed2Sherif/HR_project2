@@ -30,38 +30,9 @@
             <i class="fa-solid fa-bars" id="button"></i>        
             <i class="fas fa-xmark" id="cancel"></i>
         </label>
-        <div class="side-bar">
-            <header>
-                HR_Link
-            </header>
-            <ul>
-                <li><a href="home_HR.html"><i class="fas fa-qrcode"></i>Manage Page</a></li>
-                <li><a href="EmpTable.html"><i class="fas fa-stream"></i>Table of Employees </a></li>
-                <li><a href="about.html"><i class="fas fa-circle-question"></i>About</a></li>
-                <li><a href="services.html"><i class="fas fa-sliders-h"></i>Services</a></li>
-                <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-                {% if request.user.is_authenticated  %}
-                    <li><p>hello {{request.user.username}}</p>
-                    <li><a id="logout-link" onclick="logoutUser()" href="{% url 'logout'%}"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
-                {% else %}
-                        <li><a href="{% url 'login'%}">Login</a></li>
-                {% endif %}
-                
-                <script> 
-                    function logoutUser() {
-                        window.location.replace = "home_HR.html";
-                        history.pushState(null, null, location.href);
-                    }
-                </script>
-
-                
-
-            </ul>
-        </div>
-
-        
 
 
+        <p class="open-button btn" style="color:purple"  >Hello {{request.user.username}}</p>
         <button class="open-button btn"><a href="{%url 'add'%}"  target="_self" id="addemp"> Add Employee </a></button><br><br>
         <div class="form-popup" id="Add"></div>
 
@@ -76,7 +47,7 @@
                 <label for="employeeid">Employee ID:</label>
                 <input type="number" id="employeeid" name="employeeid" ><br><br>
 
-            <input type="submit" value="Update">
+            <button type="submit">Update</button>
 
             <!--<input type="submit" value="Update"> -->
 
