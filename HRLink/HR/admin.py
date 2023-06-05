@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin , User
 from .models import Account
-from .models import Employee
+from .models import Employee , vacation
 class AccountAdmin(UserAdmin):
     list_display = ('username', 'email', 'is_admin')
     search_fields = ('username', 'email')
@@ -28,3 +28,4 @@ class emp(admin.ModelAdmin):
 
 admin.site.register(Account,AccountAdmin)
 admin.site.register(Employee,emp)
+admin.site.register(vacation)

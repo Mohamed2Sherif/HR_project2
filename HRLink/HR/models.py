@@ -75,3 +75,10 @@ class Employee(models.Model)  :
 
     def __str__(self):
         return self.Name
+
+
+class vacation(models.Model):
+    start_date = models.TextField(max_length=20)
+    end_date = models.TextField(max_length=20)
+    employee = models.IntegerField()
+    reason = models.TextField(max_length=260)

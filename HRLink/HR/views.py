@@ -2,7 +2,7 @@ from random import randint, choice
 from datetime import date, timedelta,datetime
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from .models import Account, Employee
+from .models import Account, Employee, vacation
 from .forms import RegistrationForm, AddForm, AccountAuthenticationForm
 from django.db.models import Q
 from django.views.generic import (
@@ -14,7 +14,7 @@ from django.views.generic import (
     DetailView,
     ListView,
 )
-
+from django.forms import ValidationError
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse
 from django.urls import reverse_lazy, reverse
@@ -191,6 +191,29 @@ def list_after_delete(request):
         employeelist = Employee.objects.filter(Q(Name__icontains=Name))
         context = {"employees": employeelist}
 
+    if request.GET.get('que') == "" or request.GET.get('Name') == "":
+        employeelist = Employee.objects.all()
+        context = {"employees": employeelist}
+        return render(request, "EmpTable.html", context)
+    if request.method == "GET":
+
+        if ("que" in request.GET) and request.GET["que"].strip():
+            query_string = request.GET['que']
+            employeelist = Employee.objects.filter(
+                Name__icontains=query_string,
+                email__icontains=query_string,
+            )
+            context = {"employees": employeelist}
+            return render(request, "EmpTable.html", context)
+        else:
+            Name = request.GET.get("Name")
+            try:
+                employeelist = Employee.objects.filter(Q(Name__icontains=Name))
+                context = {"employees": employeelist}
+
+                return render(request, "EmpTable.html", context)
+            except:
+                pass
         return render(request, "EmpTable.html", context)
 
 # def employee_detail(request,employee_id):
@@ -289,16 +312,55 @@ def request_vacation(request):
         employee_pk = employee.pk
 
         firstdate = request.POST.get("from-date")
-        firstdate = date_from_string(firstdate)
+        frstdate = date_from_string(firstdate)
         secondate = request.POST.get("to-date")
-        secondate = date_from_string(secondate)
-        finaldate= secondate - firstdate
-        if employee.availableVac > finaldate.days:
-            employee.availableVac = employee.availableVac - finaldate.days
-            employee.approvedVac = employee.approvedVac + finaldate.days
-            employee.save()
-            messages.add_message(request, messages.SUCCESS, 'vacation requested ;D')
-        else:
-            messages.add_message(request, messages.WARNING, 'This Employee does not have any available vacations =( ')
+        reason = request.POST.get("reason")
+        secdate = date_from_string(secondate)
+        finaldate= secdate - frstdate
 
-    return redirect('profile',pk=employee_pk)
+        vacation.objects.create(start_date=firstdate,end_date=secondate,employee=employee_id,reason=reason)
+
+    return redirect('home')
+
+
+def welcome_view(request):
+    return render(request,"welcome.html",{})
+#
+# def view_vacation(request):
+#     return render(request,"manager.html",{})
+
+class view_vacations(ListView):
+    template_name = "manager.html"
+    model = vacation
+    context_object_name = "vacations"
+
+
+def accept_view(request):
+    id = request.GET.get('id')
+    employee = Employee.objects.get(accId=id)
+    if request.method == 'GET':
+        if 'Accept' in request.GET:
+            
+            firstdate = request.GET.get("start")
+            frstdate = date_from_string(firstdate)
+            secondate = request.GET.get("end")
+            secdate = date_from_string(secondate)
+            finaldate = secdate - frstdate
+            vac = vacation.objects.get(employee=id)
+            if employee.availableVac ==0 : 
+                vac.delete()
+                return redirect("requested")
+            if employee.availableVac > finaldate.days:
+                employee.availableVac = employee.availableVac - finaldate.days
+                employee.approvedVac = employee.approvedVac + finaldate.days
+                employee.save()
+                vac.delete()
+                return redirect("requested")
+        if 'Decline' in request.GET:
+            vac = vacation.objects.get(employee=id)
+            vac.delete()
+            return redirect("requested")
+class EmpTable(ListView) :
+    model = Employee
+    template_name = "EmpTable.html"
+    context_object_name=  "employees"

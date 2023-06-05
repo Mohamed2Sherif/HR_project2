@@ -126,7 +126,7 @@ body{
 
 @media (max-width: 992px) {
     .nav-links,
-    .header-button1 {
+    .header-button1,.logout_display_hide {
         display: none;
     }
 
